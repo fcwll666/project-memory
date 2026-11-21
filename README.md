@@ -1,0 +1,50 @@
+# Project Memory · 项目记忆
+
+用 Obsidian 保存可核验的项目记忆，让智能体跨会话找回已有成果、数据来源和下一步，沿用项目约定，减少重复工作。
+
+适合持续多个会话的研究复现、开发和调试项目。例如，新会话接手一次实验时，可以先定位已有预测文件，再从绘图继续。即使历史对话里出现过重跑建议，也能根据现有产物判断这一步是否有必要。
+
+## 快速开始
+
+将仓库克隆到 Codex 的个人 Skill 目录，或从仓库下载后将整个 `project-memory` 目录放进去。已有安装时更新现有副本，保留一个加载位置。
+
+```sh
+git clone https://github.com/fcwll666/project-memory.git "$HOME/.agents/skills/project-memory"
+```
+
+上面的命令适用于 PowerShell、Bash 和 Zsh。启动 Codex 后，用 `$project-memory` 调用。在单个 Git 项目中使用时，也可以将目录放到该项目的 `.agents/skills/project-memory` 下。安装路径可参阅 [Codex Skills 文档](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills)。
+
+首次使用可以提供项目目录和目标库。有多个相关对话时，指定主会话。数据在远端时，补充已配置的 SSH 别名和项目路径。
+
+> 用 `$project-memory` 整理当前项目。以我附上的会话为主，盘点已有脚本、数据来源和实验结果，在指定的 Obsidian 库建立项目入口。
+
+> 用 `$project-memory` 保存最新进度。沿用已有入口和笔记格式，核对本次新增产物。
+
+> 用 `$project-memory` 只读恢复项目上下文，告诉我从哪个已验证的产物接着做。
+
+## 工作方式
+
+| 操作 | 产出 |
+|---|---|
+| 首次建库 | 进度入口、当前计划、资源及来源索引，以及第一项可执行的后续工作。 |
+| 增量保存 | 核对上次保存后的变化，更新相关笔记，保留既有标题、属性和手写内容。 |
+| 只读恢复 | 交付当前状态、可复用的产物、尚待核实的事项和明确的接续点。 |
+
+记录来源时，区分历史会话给出的候选网址与实际使用的下载源。记录进度时，把「会话报告已完成」与「实际产物已核实」分别写清。需要接续某次运行时，注明输入、脚本或配置、结果文件及相关日志。
+
+## 适配范围
+
+| 环境 | 适配情况 |
+|---|---|
+| Codex 本地环境 | 已在 Windows 上用 Codex CLI 验证 Skill 发现。首次建库、增量保存和只读恢复经过模拟场景检查。 |
+| Obsidian 本地库 | 支持直接读写有访问权限的 UTF-8 Markdown。已有 Obsidian MCP 时，可使用其读取、搜索和编辑能力。 |
+| 本地或远程项目资料 | 本地目录使用文件工具。远程资料可通过现有 SSH MCP 或系统 SSH 访问，使用项目已有的连接与认证。 |
+| Claude Code、OpenCode 等宿主 | `SKILL.md` 遵循 [Agent Skills 格式](https://agentskills.io/specification)，可作为移植起点。安装位置、聊天历史读取和工具映射按宿主调整，跨宿主工作流尚待实测。 |
+
+Skill 由 Markdown 指令和模板组成。会话、文件与 Obsidian 的访问范围由运行环境和已配置的工具决定。
+
+## 二次开发与许可
+
+欢迎 fork 后按自己的项目习惯修改。可从 [工作流](SKILL.md)、[资源来源核对指南](references/resources.md) 或 [项目入口模板](assets/project-entry.md) 入手。`agents/openai.yaml` 提供 Codex 界面中的显示信息和调用示例。
+
+本仓库采用 [MIT 许可证](LICENSE)。允许使用、修改、二次开发和再分发，按许可保留版权及许可声明。
