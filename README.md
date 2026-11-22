@@ -18,6 +18,16 @@
 
 ## 快速开始
 
+### 一句话安装
+
+复制下面的提示词发给 Codex。
+
+```text
+请从 https://github.com/fcwll666/project-memory 安装 project-memory Skill，GitHub 无法访问时请改用 https://gitee.com/fa-cai-wang-liu/project-memory，按当前 Codex 的 Skill 安装方式完成安装，并确认可以用 $project-memory 调用。
+```
+
+### 手动安装
+
 将仓库克隆到 Codex 的个人 Skill 目录，或从仓库下载后将整个 `project-memory` 目录放进去。已有安装时更新现有副本，保留一个加载位置。
 
 ```sh
